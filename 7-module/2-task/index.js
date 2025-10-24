@@ -43,7 +43,7 @@ export default class Modal {
     }
   }
 
-  createRoot(){
+  createRoot() {
     this._modalRoot = createElement(`<div class="modal">
        
       <div class="modal__overlay"></div>

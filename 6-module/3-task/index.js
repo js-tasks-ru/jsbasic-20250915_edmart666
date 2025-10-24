@@ -16,9 +16,9 @@ export default class Carousel {
     </div>
   </div>`);
 
-      this.arrowLeft = this._elem.querySelector('.carousel__arrow_left');
-      this.arrowRight = this._elem.querySelector('.carousel__arrow_right');
-      this.arrowLeft.style.display = 'none';
+    this.arrowLeft = this._elem.querySelector('.carousel__arrow_left');
+    this.arrowRight = this._elem.querySelector('.carousel__arrow_right');
+    this.arrowLeft.style.display = 'none';
 
     this._elem.append(this.cretateCarouselInner());
 
@@ -33,8 +33,8 @@ export default class Carousel {
         slideData.id
       }">
   <img src="/assets/images/carousel/${
-    slideData.image
-  }" class="carousel__img" alt="slide">
+  slideData.image
+}" class="carousel__img" alt="slide">
   <div class="carousel__caption">
     <span class="carousel__price">€${slideData.price.toFixed(2)}</span>
     <div class="carousel__title">${slideData.name}</div>
@@ -50,32 +50,32 @@ export default class Carousel {
     return carouselInner;
   }
   onClick() {
-    this._elem.addEventListener('click',  ({target}) =>{
+    this._elem.addEventListener('click', ({target}) =>{
       
-      if(target.classList.contains('carousel__arrow_right')){
+      if (target.classList.contains('carousel__arrow_right')) {
         this.goRigth(target);
       }
-     if(target.classList.contains('carousel__arrow_left')){
+      if (target.classList.contains('carousel__arrow_left')) {
         this.goLeft(target);
       }
 
         
-      if(target.closest('.carousel__button')){
-          let slide = target.closest('.carousel__slide');
+      if (target.closest('.carousel__button')) {
+        let slide = target.closest('.carousel__slide');
 
         let event = new CustomEvent("product-add", { // имя события должно быть именно "product-add"
           detail: slide.dataset.id, // Уникальный идентификатора товара из объекта слайда
           bubbles: true // это событие всплывает - это понадобится в дальнейшем
-      })
+        });
         this._elem.dispatchEvent(event);
-  } 
-})}
-  goRigth(){
+      } 
+    });}
+  goRigth() {
     this.index++; 
     this.transform();
-    this.index === this.finalSlide - 1 ? this.arrowRight.style.display = "none":this.arrowLeft.style.display = "";
+    this.index === this.finalSlide - 1 ? this.arrowRight.style.display = "none" : this.arrowLeft.style.display = "";
   } 
-  goLeft(){
+  goLeft() {
     this.index--;
     this.transform();
 
@@ -84,7 +84,7 @@ export default class Carousel {
       this.arrowRight.style.display = "";
     }
   }
-  transform(){
+  transform() {
     let mainDiv = this._elem.querySelector('.carousel__slide');
     this._elem.querySelector('.carousel__inner').style.transform = `translateX(-${mainDiv.offsetWidth * this.index}px)`;
   }
