@@ -54,7 +54,7 @@ export default class UserTable {
     return head;
   }
 
-  createBody(){
+  createBody() {
     let eBody = document.createElement("tbody");
 
     for (let row of this.arrData) {

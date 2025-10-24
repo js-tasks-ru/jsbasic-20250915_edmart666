@@ -11,9 +11,9 @@ function print(text) {
  */
 function isValid(name) {
 
-  if(name === null)return false 
+  if (name === null) {return false;} 
   // ваш код...
-  if(name.indexOf(' ') >= 0 || name.length < 4){
+  if (name.indexOf(' ') >= 0 || name.length < 4) {
     return false;
   }
   return true;
